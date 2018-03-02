@@ -1,0 +1,12 @@
+{
+  "name": "word-clock-electron",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^1.8.2"
+  }
+}
