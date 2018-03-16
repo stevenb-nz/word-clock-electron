@@ -1,4 +1,8 @@
-html, body, canvas {
-  height: 220;
-  background-color: #111;
+canvas {
+  border: 0px;
+  background-color: #abacbc;
+}
+
+body, canvas {
+  margin: 0;
 }

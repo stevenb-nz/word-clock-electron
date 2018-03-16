@@ -10,6 +10,7 @@ app.once('ready', () => {
   win = new BrowserWindow({
     width: 550,
     height: 242,
+    resizable: false,
     show: false
   })
 
