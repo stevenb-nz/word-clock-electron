@@ -5,8 +5,16 @@ $(() => {
   canvas.height = window.innerHeight;
 
   var c = canvas.getContext("2d");
+  var on = true;
 
   c.font = "30px Arial";
-  c.fillStyle = "#FF0000";
-  c.fillText("Hello World", 10, 50);
+  window.setInterval(function() {
+    on = !on;
+    if (on) {
+      c.fillStyle = "#ff0000";
+    } else {
+      c.fillStyle = "#0000ff";
+    }
+    c.fillText("Hello World", 40, 40);
+  }, 500);
 })
