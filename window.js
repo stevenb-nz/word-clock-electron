@@ -7,14 +7,14 @@ $(() => {
   var c = canvas.getContext("2d");
   var on = true;
 
-  c.font = "30px Arial";
+  c.font = "24px System";
   window.setInterval(function() {
     on = !on;
     if (on) {
-      c.fillStyle = "#ff0000";
+      c.fillStyle = "#FF0000";
     } else {
-      c.fillStyle = "#0000ff";
+      c.fillStyle = "#FF9999";
     }
-    c.fillText("Hello World", 40, 40);
+    c.fillText("HELLO WORLD", 40, 40);
   }, 500);
 })
