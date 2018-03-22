@@ -3,7 +3,7 @@ $(() => {
     return d.getHours() % 12;
   }
   function extract_5min (d) {
-    return Math.floor(d.getMinutes()/5)*5;
+    return Math.floor(d.getMinutes()/5);
   }
 
   var canvas = document.querySelector('canvas')
@@ -19,6 +19,9 @@ $(() => {
   var d = new Date();
   var c_hour = extract_hour(d);
   var c_5min = extract_5min(d);
+  c.clearRect(0, 0, canvas.width, canvas.height);
+  c.fillText(c_hour+' '+c_5min*5, 40, 40);
+
   window.setInterval(function() {
     on = !on;
     if (on) {
