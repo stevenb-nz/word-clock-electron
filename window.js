@@ -10,14 +10,16 @@ $(() => {
     c.fillText(c_hour+' '+c_5min*5, 40, 40);
   }
 
+  let on_colour = "#FF0000";
+  let off_colour = "#EDADAD";
+
   var canvas = document.querySelector('canvas')
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   var c = canvas.getContext("2d");
-  var on = true;
-  c.fillStyle = "#FF0000";
+  c.fillStyle = off_colour;
   c.font = "24px System";
 
   var d = new Date();
@@ -26,19 +28,15 @@ $(() => {
   display_time(c_hour, c_5min, c);
 
   window.setInterval(function() {
-    on = !on;
-    if (on) {
-      c.fillStyle = "#FF0000";
-    } else {
-      c.fillStyle = "#FF9999";
-    }
     d = new Date();
-    if (c_hour !== extract_hour(d)) {
-      c_hour = extract_hour(d);
+    if (c_5min !== extract_5min(d)) {
+      c.fillStyle = off_colour;
+      c_5min = extract_5min(d);
       display_time(c_hour, c_5min, c);
     }
-    if (c_5min !== extract_5min(d)) {
-      c_5min = extract_5min(d);
+    if (c_hour !== extract_hour(d)) {
+      c.fillStyle = on_colour;
+      c_hour = extract_hour(d);
       display_time(c_hour, c_5min, c);
     }
   }, 500);
