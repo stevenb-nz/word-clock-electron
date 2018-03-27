@@ -13,18 +13,18 @@ $(() => {
   let on_colour = "#FF0000";
   let off_colour = "#EDADAD";
 
-  var canvas = document.querySelector('canvas')
+  const canvas = document.querySelector('canvas')
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  var c = canvas.getContext("2d");
+  const c = canvas.getContext("2d");
   c.fillStyle = off_colour;
   c.font = "24px System";
 
-  var d = new Date();
-  var c_hour = extract_hour(d);
-  var c_5min = extract_5min(d);
+  let d = new Date();
+  let c_hour = extract_hour(d);
+  let c_5min = extract_5min(d);
   display_time(c_hour, c_5min, c);
 
   window.setInterval(function() {
