@@ -33,11 +33,11 @@ $(() => {
       c.fillStyle = off_colour;
       c_5min = extract_5min(d);
       display_time(c_hour, c_5min, c);
-    }
-    if (c_hour !== extract_hour(d)) {
-      c.fillStyle = on_colour;
-      c_hour = extract_hour(d);
-      display_time(c_hour, c_5min, c);
+      if (c_hour !== extract_hour(d)) {
+        c.fillStyle = on_colour;
+        c_hour = extract_hour(d);
+        display_time(c_hour, c_5min, c);
+      }
     }
   }, 500);
 })
