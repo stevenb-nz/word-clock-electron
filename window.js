@@ -5,10 +5,12 @@ $(() => {
   function extract_5min (d) {
     return Math.floor(d.getMinutes()/5);
   }
-  function display_5min (c_5min, c) {
+  function display_5min (c_5min, c, display_colour) {
+    c.fillStyle = display_colour;
     c.fillText(c_5min*5, 10*c_5min, 40);
   }
-  function display_hour (c_hour, c) {
+  function display_hour (c_hour, c, display_colour) {
+    c.fillStyle = display_colour;
     c.fillText(c_hour, 40, 10*c_hour);
   }
 
@@ -21,25 +23,25 @@ $(() => {
   canvas.height = window.innerHeight;
 
   const c = canvas.getContext("2d");
-  c.fillStyle = off_colour;
   c.font = "24px System";
 
   let d = new Date();
   let c_hour = extract_hour(d);
   let c_5min = extract_5min(d);
-  display_hour(c_hour, c);
-  display_5min(c_5min, c);
+  // display_setup(c);
+  display_hour(c_hour, c, on_colour);
+  display_5min(c_5min, c, on_colour);
 
   window.setInterval(function() {
     d = new Date();
     if (c_5min !== extract_5min(d)) {
-      c.fillStyle = off_colour;
+      display_5min(c_5min, c, off_colour);
       c_5min = extract_5min(d);
-      display_5min(c_5min, c);
+      display_5min(c_5min, c, on_colour);
       if (c_hour !== extract_hour(d)) {
-        c.fillStyle = on_colour;
+        display_hour(c_hour, c, off_colour);
         c_hour = extract_hour(d);
-        display_hour(c_hour, c);
+        display_hour(c_hour, c, on_colour);
       }
     }
   }, 500);
