@@ -1,3 +1,14 @@
+/*switch(expression) {
+    case n:
+        code block
+        break;
+    case n:
+        code block
+        break;
+    default:
+        code block
+}*/
+
 $(() => {
   function extract_hour (d) {
     return d.getHours() % 12;
