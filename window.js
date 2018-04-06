@@ -10,6 +10,12 @@
 }*/
 
 $(() => {
+  phrases = [{phrase: "THE TIME IS", x: "20", y: "47"}];
+
+  function display (phrase, c) {
+    c.fillText(phrase.phrase, phrase.x, phrase.y);
+  }
+
   function extract_hour (d) {
     return d.getHours() % 12;
   }
@@ -35,11 +41,12 @@ $(() => {
 
   const c = canvas.getContext("2d");
   c.font = "24px System";
+  c.fillStyle = on_colour;
 
   let d = new Date();
   let c_hour = extract_hour(d);
   let c_5min = extract_5min(d);
-  // display_setup(c);
+  display(phrases[0],c);
   display_hour(c_hour, c, on_colour);
   display_5min(c_5min, c, on_colour);
 
