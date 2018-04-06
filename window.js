@@ -1,16 +1,5 @@
-/*switch(expression) {
-    case n:
-        code block
-        break;
-    case n:
-        code block
-        break;
-    default:
-        code block
-}*/
-
 $(() => {
-  phrases = [{phrase: "THE TIME IS", x: "20", y: "47"}];
+  const phrases = [{phrase: "THE TIME IS", x: "20", y: "47"}];
 
   function display (phrase, c) {
     c.fillText(phrase.phrase, phrase.x, phrase.y);
@@ -24,10 +13,30 @@ $(() => {
   }
   function display_5min (c_5min, c, display_colour) {
     c.fillStyle = display_colour;
+    /*switch(expression) {
+      case n:
+        code block
+        break;
+      case n:
+        code block
+        break;
+      default:
+        code block
+    }*/
     c.fillText(c_5min*5, 10*c_5min, 40);
   }
   function display_hour (c_hour, c, display_colour) {
     c.fillStyle = display_colour;
+    /*switch(expression) {
+      case n:
+        code block
+        break;
+      case n:
+        code block
+        break;
+      default:
+        code block
+    }*/
     c.fillText(c_hour, 40, 10*c_hour);
   }
 
