@@ -1,5 +1,26 @@
 $(() => {
-  const phrases = [{phrase: "THE TIME IS", x: "20", y: "47"}];
+  const phrases = [{phrase: "THE TIME IS", x: "20", y: "47"},
+                   {phrase: "HALF", x: "203", y: "47"},
+                   {phrase: "TEN", x: "313", y: "47"},
+                   {phrase: "QUARTER", x: "414", y: "47"},
+                   {phrase: "TWENTY", x: "20", y: "85"},
+                   {phrase: "FIVE", x: "155", y: "85"},
+                   {phrase: "MINUTES", x: "248", y: "85"},
+                   {phrase: "TO", x: "392", y: "85"},
+                   {phrase: "PAST", x: "468", y: "85"},
+                   {phrase: "ONE", x: "20", y: "123"},
+                   {phrase: "TWO", x: "119", y: "123"},
+                   {phrase: "THREE", x: "227", y: "123"},
+                   {phrase: "FOUR", x: "356", y: "123"},
+                   {phrase: "FIVE", x: "474", y: "123"},
+                   {phrase: "SIX", x: "20", y: "161"},
+                   {phrase: "SEVEN", x: "140", y: "161"},
+                   {phrase: "EIGHT", x: "310", y: "161"},
+                   {phrase: "NINE", x: "470", y: "161"},
+                   {phrase: "TEN", x: "20", y: "199"},
+                   {phrase: "ELEVEN", x: "124", y: "199"},
+                   {phrase: "TWELVE", x: "271", y: "199"},
+                   {phrase: "O'CLOCK", x: "426", y: "199"}];
 
   function display (phrase, c) {
     c.fillText(phrase.phrase, phrase.x, phrase.y);
