@@ -34,17 +34,44 @@ $(() => {
   }
   function display_5min (c_5min, c, display_colour) {
     c.fillStyle = display_colour;
-    /*switch(expression) {
-      case n:
-        code block
+    switch(c_5min) {
+      case 0:
+        display(phrases[21],c);
         break;
-      case n:
-        code block
+      case 1:
+        display(phrases[0],c);
         break;
-      default:
-        code block
-    }*/
-    c.fillText(c_5min*5, 10*c_5min, 40);
+      case 2:
+        display(phrases[0],c);
+        break;
+      case 3:
+        display(phrases[0],c);
+        break;
+      case 4:
+        display(phrases[0],c);
+        break;
+      case 5:
+        display(phrases[0],c);
+        break;
+      case 6:
+        display(phrases[0],c);
+        break;
+      case 7:
+        display(phrases[0],c);
+        break;
+      case 8:
+        display(phrases[0],c);
+        break;
+      case 9:
+        display(phrases[0],c);
+        break;
+      case 10:
+        display(phrases[0],c);
+        break;
+      case 11:
+        display(phrases[0],c);
+        break;
+    }
   }
   function display_hour (c_hour, c, display_colour) {
     c.fillStyle = display_colour;
