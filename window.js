@@ -32,6 +32,9 @@ $(() => {
   function extract_5min (d) {
     return Math.floor(d.getMinutes()/5);
   }
+  function increment_hour (c_hour) {
+    return (c_hour + 1) % 12;
+  }
   function display_5min (c_5min, c, display_colour) {
     c.fillStyle = display_colour;
     switch(c_5min) {
@@ -91,7 +94,7 @@ $(() => {
   let on_colour = "#FF0000";
   let off_colour = "#EDADAD";
 
-  const canvas = document.querySelector('canvas')
+  const canvas = document.querySelector('canvas');
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -99,13 +102,16 @@ $(() => {
   const c = canvas.getContext("2d");
   c.font = "24px System";
   c.fillStyle = on_colour;
+  display(phrases[0],c);
 
   let d = new Date();
-  let c_hour = extract_hour(d);
   let c_5min = extract_5min(d);
-  display(phrases[0],c);
-  display_hour(c_hour, c, on_colour);
+  let c_hour = extract_hour(d);
   display_5min(c_5min, c, on_colour);
+  if (c_5min > 6) { // between 25-to and 5-to inclusive
+    c_hour = increment_hour(c_hour);
+  }
+  display_hour(c_hour, c, on_colour);
 
   window.setInterval(function() {
     d = new Date();
@@ -113,11 +119,11 @@ $(() => {
       display_5min(c_5min, c, off_colour);
       c_5min = extract_5min(d);
       display_5min(c_5min, c, on_colour);
-      if (c_hour !== extract_hour(d)) {
+      if (c_5min == 7) { // at 25-to
         display_hour(c_hour, c, off_colour);
-        c_hour = extract_hour(d);
+        c_hour = increment_hour(c_hour);
         display_hour(c_hour, c, on_colour);
       }
     }
   }, 500);
-})
+});
