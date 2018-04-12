@@ -1,29 +1,38 @@
 $(() => {
-  const phrases = [{phrase: "THE TIME IS", x: "20", y: "47"},
-                   {phrase: "HALF", x: "203", y: "47"},
-                   {phrase: "TEN", x: "313", y: "47"},
-                   {phrase: "QUARTER", x: "414", y: "47"},
-                   {phrase: "TWENTY", x: "20", y: "85"},
-                   {phrase: "FIVE", x: "155", y: "85"},
-                   {phrase: "MINUTES", x: "248", y: "85"},
-                   {phrase: "TO", x: "392", y: "85"},
-                   {phrase: "PAST", x: "468", y: "85"},
-                   {phrase: "ONE", x: "20", y: "123"},
-                   {phrase: "TWO", x: "119", y: "123"},
-                   {phrase: "THREE", x: "227", y: "123"},
-                   {phrase: "FOUR", x: "356", y: "123"},
-                   {phrase: "FIVE", x: "474", y: "123"},
-                   {phrase: "SIX", x: "20", y: "161"},
-                   {phrase: "SEVEN", x: "140", y: "161"},
-                   {phrase: "EIGHT", x: "310", y: "161"},
-                   {phrase: "NINE", x: "470", y: "161"},
-                   {phrase: "TEN", x: "20", y: "199"},
-                   {phrase: "ELEVEN", x: "124", y: "199"},
-                   {phrase: "TWELVE", x: "271", y: "199"},
-                   {phrase: "O'CLOCK", x: "426", y: "199"}];
+  const phrases = {the_time_is: {phrase: "THE TIME IS", x: "20", y: "41"},
+                   half: {phrase: "HALF", x: "203", y: "41"},
+                   ten_min: {phrase: "TEN", x: "313", y: "41"},
+                   quarter: {phrase: "QUARTER", x: "414", y: "41"},
+                   twenty: {phrase: "TWENTY", x: "20", y: "80"},
+                   five_min: {phrase: "FIVE", x: "155", y: "80"},
+                   minutes: {phrase: "MINUTES", x: "248", y: "80"},
+                   to: {phrase: "TO", x: "392", y: "80"},
+                   past: {phrase: "PAST", x: "468", y: "80"},
+                   one: {phrase: "ONE", x: "20", y: "119"},
+                   two: {phrase: "TWO", x: "119", y: "119"},
+                   three: {phrase: "THREE", x: "227", y: "119"},
+                   four: {phrase: "FOUR", x: "356", y: "119"},
+                   five: {phrase: "FIVE", x: "474", y: "119"},
+                   six: {phrase: "SIX", x: "20", y: "158"},
+                   seven: {phrase: "SEVEN", x: "140", y: "158"},
+                   eight: {phrase: "EIGHT", x: "310", y: "158"},
+                   nine: {phrase: "NINE", x: "470", y: "158"},
+                   ten: {phrase: "TEN", x: "20", y: "197"},
+                   eleven: {phrase: "ELEVEN", x: "124", y: "197"},
+                   twelve: {phrase: "TWELVE", x: "271", y: "197"},
+                   oclock: {phrase: "O'CLOCK", x: "426", y: "197"}};
 
   function display (phrase, c) {
     c.fillText(phrase.phrase, phrase.x, phrase.y);
+  }
+  function display_setup (c) {
+    c.fillStyle = off_colour;
+    for(let key in phrases) {
+      let phrase = phrases[key];
+      display(phrase,c);
+    }
+    c.fillStyle = on_colour;
+    display(phrases.the_time_is,c);
   }
 
   function extract_hour (d) {
@@ -39,56 +48,104 @@ $(() => {
     c.fillStyle = display_colour;
     switch(c_5min) {
       case 0:
-        display(phrases[21],c);
+        display(phrases.oclock,c);
         break;
       case 1:
-        display(phrases[0],c);
+        display(phrases.five_min,c);
+        display(phrases.minutes,c);
+        display(phrases.past,c);
         break;
       case 2:
-        display(phrases[0],c);
+        display(phrases.ten_min,c);
+        display(phrases.minutes,c);
+        display(phrases.past,c);
         break;
       case 3:
-        display(phrases[0],c);
+        display(phrases.quarter,c);
+        display(phrases.past,c);
         break;
       case 4:
-        display(phrases[0],c);
+        display(phrases.twenty,c);
+        display(phrases.minutes,c);
+        display(phrases.past,c);
         break;
       case 5:
-        display(phrases[0],c);
+        display(phrases.twenty,c);
+        display(phrases.five_min,c);
+        display(phrases.minutes,c);
+        display(phrases.past,c);
         break;
       case 6:
-        display(phrases[0],c);
+        display(phrases.half,c);
+        display(phrases.past,c);
         break;
       case 7:
-        display(phrases[0],c);
+        display(phrases.twenty,c);
+        display(phrases.five_min,c);
+        display(phrases.minutes,c);
+        display(phrases.to,c);
         break;
       case 8:
-        display(phrases[0],c);
+        display(phrases.twenty,c);
+        display(phrases.minutes,c);
+        display(phrases.to,c);
         break;
       case 9:
-        display(phrases[0],c);
+        display(phrases.quarter,c);
+        display(phrases.to,c);
         break;
       case 10:
-        display(phrases[0],c);
+        display(phrases.ten_min,c);
+        display(phrases.minutes,c);
+        display(phrases.to,c);
         break;
       case 11:
-        display(phrases[0],c);
+        display(phrases.five_min,c);
+        display(phrases.minutes,c);
+        display(phrases.to,c);
         break;
     }
   }
   function display_hour (c_hour, c, display_colour) {
     c.fillStyle = display_colour;
-    /*switch(expression) {
-      case n:
-        code block
+    switch(c_hour) {
+      case 0:
+        display(phrases.twelve,c);
         break;
-      case n:
-        code block
+      case 1:
+        display(phrases.one,c);
         break;
-      default:
-        code block
-    }*/
-    c.fillText(c_hour, 40, 10*c_hour);
+      case 2:
+        display(phrases.two,c);
+        break;
+      case 3:
+        display(phrases.three,c);
+        break;
+      case 4:
+        display(phrases.four,c);
+        break;
+      case 5:
+        display(phrases.five,c);
+        break;
+      case 6:
+        display(phrases.six,c);
+        break;
+      case 7:
+        display(phrases.seven,c);
+        break;
+      case 8:
+        display(phrases.eight,c);
+        break;
+      case 9:
+        display(phrases.nine,c);
+        break;
+      case 10:
+        display(phrases.ten,c);
+        break;
+      case 11:
+        display(phrases.eleven,c);
+        break;
+    }
   }
 
   let on_colour = "#FF0000";
@@ -101,8 +158,7 @@ $(() => {
 
   const c = canvas.getContext("2d");
   c.font = "24px System";
-  c.fillStyle = on_colour;
-  display(phrases[0],c);
+  display_setup(c);
 
   let d = new Date();
   let c_5min = extract_5min(d);
