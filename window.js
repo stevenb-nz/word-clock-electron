@@ -26,6 +26,11 @@ $(() => {
     c.fillText(phrase.phrase, phrase.x, phrase.y);
   }
   function display_setup (c) {
+    c.fillStyle = on_colour;
+    for(let key in phrases) {
+      let phrase = phrases[key];
+      display(phrase,c);
+    }
     c.fillStyle = off_colour;
     for(let key in phrases) {
       let phrase = phrases[key];
