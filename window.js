@@ -154,7 +154,13 @@ $(() => {
   }
 
   function onWindowResize () {
-
+    let new_height = window.height / 10;
+    let new_width = window.width / 19;
+    if (new_height > new_width) {
+      window.height = new_width * 10;
+    } else {
+      window.width = new_height * 19;
+    }
   }
 
   let on_colour = "#FF0000";
