@@ -153,6 +153,10 @@ $(() => {
     }
   }
 
+  function onWindowResize () {
+
+  }
+
   let on_colour = "#FF0000";
   let off_colour = "#EDADAD";
 
@@ -173,6 +177,11 @@ $(() => {
     c_hour = increment_hour(c_hour);
   }
   display_hour(c_hour, c, on_colour);
+
+  window.addEventListener('resize', function(e){
+    e.preventDefault();
+    that.onWindowResize();
+  });
 
   window.setInterval(function() {
     d = new Date();
