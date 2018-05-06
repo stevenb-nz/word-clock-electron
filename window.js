@@ -154,12 +154,12 @@ $(() => {
   }
 
   function onWindowResize () {
-    let new_height = window.height / 10;
-    let new_width = window.width / 19;
+    let new_width = win.width / 19;
+    let new_height = win.height / 10;
     if (new_height > new_width) {
-      window.height = new_width * 10;
+      win.setSize(win.width,new_width*10);
     } else {
-      window.width = new_height * 19;
+      win.setSize(new_height*19,win.height);
     }
   }
 
@@ -184,9 +184,9 @@ $(() => {
   }
   display_hour(c_hour, c, on_colour);
 
-  window.addEventListener('resize', function(e){
-    e.preventDefault();
-    that.onWindowResize();
+  win.addEventListener('resize', function(e){
+//    e.preventDefault();
+//    that.onWindowResize();
   });
 
   window.setInterval(function() {

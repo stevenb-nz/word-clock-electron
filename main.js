@@ -13,6 +13,8 @@ app.once('ready', () => {
     show: false
   })
 
+  win.setAspectRatio(5/2)
+
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
