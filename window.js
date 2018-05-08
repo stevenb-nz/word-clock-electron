@@ -189,11 +189,10 @@ $(() => {
 
   window.addEventListener('resize', function(e){
     e.preventDefault();
-    that.onWindowResize();
+    win.setSize(window.innerWidth,Math.round((window.innerWidth*2)/5)+22);
   });
 
   window.setInterval(function() {
-    win.setSize(window.innerWidth,Math.round((window.innerWidth*2)/5)+22);
     d = new Date();
     if (c_5min !== extract_5min(d)) {
       display_5min(c_5min, c, off_colour);
