@@ -154,16 +154,17 @@ $(() => {
   }
 
   function onWindowResize () {
-    let new_width = window.width / 19;
-    let new_height = window.height / 10;
-    if (new_height > new_width) {
-      win.setSize(window.width,new_width*10);
-    } else {
-      win.setSize(new_height*19,window.height);
-    }
+    // let new_width = window.width / 19;
+    // let new_height = window.height / 10;
+    // if (new_height > new_width) {
+    //   win.setSize(window.width,new_width*10);
+    // } else {
+    //   win.setSize(new_height*19,window.height);
+    // }
   }
 
-  let win = require('electron').remote.getCurrentWindow();
+  let { remote } = require('electron');
+  let win = remote.getCurrentWindow();
 
   let on_colour = "#FF0000";
   let off_colour = "#EDADAD";
@@ -192,6 +193,7 @@ $(() => {
   });
 
   window.setInterval(function() {
+    win.setSize(window.innerWidth,Math.round((window.innerWidth*2)/5)+22);
     d = new Date();
     if (c_5min !== extract_5min(d)) {
       display_5min(c_5min, c, off_colour);
