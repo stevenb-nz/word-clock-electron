@@ -25,7 +25,13 @@ $(() => {
   function display (phrase, c) {
     c.fillText(phrase.phrase, phrase.x, phrase.y);
   }
+  function canvas_setup (canvas) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
   function display_setup (c) {
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.font = "24px System";
     c.fillStyle = on_colour;
     for(let key in phrases) {
       let phrase = phrases[key];
@@ -38,6 +44,16 @@ $(() => {
     }
     c.fillStyle = on_colour;
     display(phrases.the_time_is,c);
+  }
+  function reset_display (c) {
+    d = new Date();
+    c_5min = extract_5min(d);
+    c_hour = extract_hour(d);
+    display_5min(c_5min, c, on_colour);
+    if (c_5min > 6) { // between 25-to and 5-to inclusive
+      c_hour = increment_hour(c_hour);
+    }
+    display_hour(c_hour, c, on_colour);
   }
 
   function extract_hour (d) {
@@ -154,6 +170,10 @@ $(() => {
   }
 
   function onWindowResize () {
+    //win.setSize(window.innerWidth,Math.round((window.innerWidth*2)/5)+22);
+    canvas_setup(canvas);
+    display_setup(c);
+    reset_display(c);
     // let new_width = window.width / 19;
     // let new_height = window.height / 10;
     // if (new_height > new_width) {
@@ -170,26 +190,19 @@ $(() => {
   let off_colour = "#EDADAD";
 
   const canvas = document.querySelector('canvas');
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas_setup(canvas);
 
   const c = canvas.getContext("2d");
-  c.font = "24px System";
   display_setup(c);
 
-  let d = new Date();
-  let c_5min = extract_5min(d);
-  let c_hour = extract_hour(d);
-  display_5min(c_5min, c, on_colour);
-  if (c_5min > 6) { // between 25-to and 5-to inclusive
-    c_hour = increment_hour(c_hour);
-  }
-  display_hour(c_hour, c, on_colour);
+  let d;
+  let c_5min;
+  let c_hour;
+  reset_display(c);
 
   window.addEventListener('resize', function(e){
     e.preventDefault();
-    win.setSize(window.innerWidth,Math.round((window.innerWidth*2)/5)+22);
+    onWindowResize();
   });
 
   window.setInterval(function() {
