@@ -31,7 +31,9 @@ $(() => {
   }
   function display_setup (c) {
     c.clearRect(0, 0, canvas.width, canvas.height);
-    c.font = "24px System";
+    scale_factor = canvas.width/550;
+    let fontsize = scale(24,scale_factor);
+    c.font = `${fontsize}px System`;
     c.fillStyle = on_colour;
     for(let key in phrases) {
       let phrase = phrases[key];
@@ -54,6 +56,10 @@ $(() => {
       c_hour = increment_hour(c_hour);
     }
     display_hour(c_hour, c, on_colour);
+  }
+
+  function scale (value,scale_factor) {
+    return Math.round(value*scale_factor);
   }
 
   function extract_hour (d) {
@@ -170,17 +176,9 @@ $(() => {
   }
 
   function onWindowResize () {
-    //win.setSize(window.innerWidth,Math.round((window.innerWidth*2)/5)+22);
     canvas_setup(canvas);
     display_setup(c);
     reset_display(c);
-    // let new_width = window.width / 19;
-    // let new_height = window.height / 10;
-    // if (new_height > new_width) {
-    //   win.setSize(window.width,new_width*10);
-    // } else {
-    //   win.setSize(new_height*19,window.height);
-    // }
   }
 
   let { remote } = require('electron');
@@ -193,6 +191,7 @@ $(() => {
   canvas_setup(canvas);
 
   const c = canvas.getContext("2d");
+  let scale_factor;
   display_setup(c);
 
   let d;
