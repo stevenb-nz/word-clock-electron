@@ -23,7 +23,7 @@ $(() => {
                    oclock: {phrase: "O'CLOCK", x: "426", y: "197"}};
 
   function display (phrase, c) {
-    c.fillText(phrase.phrase, phrase.x, phrase.y);
+    c.fillText(phrase.phrase, scale(phrase.x,scale_factor), scale(phrase.y,scale_factor));
   }
   function canvas_setup (canvas) {
     canvas.width = window.innerWidth;
