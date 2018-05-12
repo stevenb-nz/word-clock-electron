@@ -176,6 +176,13 @@ $(() => {
   }
 
   function onWindowResize () {
+    if (process.platform !== 'darwin') { // aspect ratio - for not Mac/darwin
+      if (window.innerWidth/5 > window.innerHeight/2) {
+        win.setSize(window.innerWidth,Math.round((window.innerWidth*2)/5));
+      } else if (window.innerHeight/2 > window.innerWidth/5) {
+        win.setSize(Math.round((window.innerHeight*5)/2),window.innerHeight);
+      }
+    }
     canvas_setup(canvas);
     display_setup(c);
     reset_display(c);
@@ -183,6 +190,7 @@ $(() => {
 
   let { remote } = require('electron');
   let win = remote.getCurrentWindow();
+  win.setAspectRatio(5/2); // only affects Mac/darwin
 
   let on_colour = "#FF0000";
   let off_colour = "#EDADAD";
