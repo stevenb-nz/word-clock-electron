@@ -30,6 +30,7 @@ $(() => {
     canvas.height = window.innerHeight;
   }
   function display_setup (c) {
+    $('canvas').css('background-color', bg_colour);
     c.clearRect(0, 0, canvas.width, canvas.height);
     scale_factor = canvas.width/550;
     let fontsize = scale(24,scale_factor);
@@ -60,6 +61,11 @@ $(() => {
 
   function scale (value,scale_factor) {
     return Math.round(value*scale_factor);
+  }
+  function setRandomColours () {
+    bg_colour = "#18e7e7";
+    on_colour = "#ff0000";
+    off_colour = "#58ADAD";
   }
 
   function extract_hour (d) {
@@ -188,8 +194,7 @@ $(() => {
     reset_display(c);
   }
   function onCanvasClick () {
-    on_colour = "#000000";
-    off_colour = "#ADADAD";
+    setRandomColours();
     display_setup(c);
     reset_display(c);
   }
@@ -198,8 +203,10 @@ $(() => {
   let win = remote.getCurrentWindow();
   win.setAspectRatio(5/2); // only affects Mac/darwin
 
-  let on_colour = "#FF0000";
-  let off_colour = "#EDADAD";
+  let bg_colour;
+  let on_colour;
+  let off_colour;
+  setRandomColours();
 
   const canvas = document.querySelector('canvas');
   canvas_setup(canvas);
