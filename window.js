@@ -187,6 +187,12 @@ $(() => {
     display_setup(c);
     reset_display(c);
   }
+  function onCanvasClick () {
+    on_colour = "#000000";
+    off_colour = "#ADADAD";
+    display_setup(c);
+    reset_display(c);
+  }
 
   let { remote } = require('electron');
   let win = remote.getCurrentWindow();
@@ -211,6 +217,10 @@ $(() => {
     e.preventDefault();
     onWindowResize();
   });
+
+  canvas.addEventListener('click', function() {
+    onCanvasClick();
+  }, false);
 
   window.setInterval(function() {
     d = new Date();
