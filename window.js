@@ -63,9 +63,16 @@ $(() => {
     return Math.round(value*scale_factor);
   }
   function setRandomColours () {
-    bg_colour = "#18e7e7";
-    on_colour = "#ff0000";
-    off_colour = "#58ADAD";
+    let randomBinary;
+    bg_colour = "#";
+    on_colour = "#";
+    off_colour = "#";
+    for (let i = 0; i<3; i++) {
+      randomBinary = Math.floor(Math.random() * 2);
+      bg_colour += randomBinary ? "18" : "e7";
+      on_colour += randomBinary ? "ff" : "00";
+      off_colour += randomBinary ? "58" : "ad";
+    }
   }
 
   function extract_hour (d) {
